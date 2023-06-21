@@ -3,19 +3,20 @@ package com.example.customview1;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 
 public class CustomButton extends androidx.appcompat.widget.AppCompatButton {
-    private Paint color1;
-    private Paint color2;
+
     private int bgColor1 = android.R.color.holo_red_light;
     private int bgColor2 = android.R.color.holo_green_light;
-    private int textColors = R.color.black;
-    private Paint textColor;
+    private Drawable heart;
+
     private boolean clicked = false;
 
 
@@ -35,16 +36,8 @@ public class CustomButton extends androidx.appcompat.widget.AppCompatButton {
     }
 
     public void init(){
-//        textColor = new Paint(Paint.ANTI_ALIAS_FLAG);
-//        textColor.setColor(getResources().getColor(R.color.black));
-//        textColor.setStyle(Paint.Style.FILL_AND_STROKE);
-//        textColor.setTextAlign(Paint.Align.CENTER);
-//        textColor.setTextSize(40f);
-
-//        color1 = new Paint(Paint.ANTI_ALIAS_FLAG);
-//        color1.setColor(Color.RED);
-//        color2 = new Paint(Paint.ANTI_ALIAS_FLAG);
-//        color2.setColor(Color.GREEN);
+        heart = ResourcesCompat.getDrawable(getResources(), R.drawable.baseline_favorite_24, null);
+        setCompoundDrawablesRelativeWithIntrinsicBounds(heart, null, heart,null);
         setBackgroundColor(getResources().getColor(bgColor1));
         setOnClickListener(new OnClickListener() {
             @Override
